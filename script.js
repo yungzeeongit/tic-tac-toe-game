@@ -16,25 +16,28 @@ document.getElementById('board').addEventListener('click',handleTurn)
 /*-- functions --*/
 
 function initGame() {
-    board = ["2", "5", "6",
-            "2", "3", "5"
-          , "8", "6", "7"]
+    board = ["", "", "",
+            "", "", ""
+          , "", "", ""]
         render()
 }
 
 function render() {
-    board.forEach((mark,index) => {
+    board.forEach(function(mark,index){
 squares[index].textContent = mark    });
 
 }
 
 function handleTurn(event) {
     let idx = squares.findIndex(function (square) {
-        return square = event.target
+        return square === event.target
     })
     board[idx] = turn
 
- }
+turn = turn === "X"?"O":"X"
+render()
+
+}
 
 
 
