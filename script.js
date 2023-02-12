@@ -33,7 +33,7 @@ function handleTurn(event) {
         return square = event.target
     })
     board[idx] = turn
-    console.log(board)
+
  }
 
 
