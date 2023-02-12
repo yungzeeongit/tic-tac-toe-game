@@ -23,6 +23,7 @@ const messages = document.querySelector('h2')
 /*-- event listeners --*/
 document.getElementById('board').addEventListener('click',handleTurn)
 
+document.getElementById('reset-button').addEventListener('click',initGame)
 
 /*-- functions --*/
 
@@ -36,7 +37,7 @@ function initGame() {
 function render() {
     board.forEach(function(mark,index){
 squares[index].textContent = mark    });
-messages.textContent = win?` ${win} wins this round`:`Its ${turn}'s turn`
+messages.textContent = win === 'T'?"It's a tie!" : win?` ${win} wins this round`:`Its ${turn}'s turn`
 
 }
 
@@ -59,7 +60,7 @@ function getWinner() {
         if(board[combo[0]] && board[combo[0]] === board[combo[1]] && board[combo[1]] === board[combo[2]])
         winner = board[combo[0]]
     })
-    return winner
+    return winner ? winner : board.includes('')? null: "T"
 }
 
 
