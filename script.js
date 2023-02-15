@@ -15,6 +15,7 @@ let board
 let turn = 'X'
 let win
 
+
 /*-- cached elements references  --*/
 const squares = Array.from(document.querySelectorAll('#board div'))
 const messages = document.querySelector('h2')
@@ -42,13 +43,20 @@ messages.textContent = win === 'T'?"It's a tie!" : win?` ${win} wins this round`
 }
 
 function handleTurn(event) {
+
+    
     let idx = squares.findIndex(function (square) {
         return square === event.target
     })
-    board[idx] = turn
-win = getWinner()
+     
+       board[idx] = turn
 
-turn = turn === "X"?"O":"X"
+   win = getWinner()
+if (squares[i].textContent === "") {
+    
+}
+ 
+
 render()
 
 }
@@ -63,6 +71,15 @@ function getWinner() {
     return winner ? winner : board.includes('')? null: "T"
 }
 
+function checkSquare() {
+    
+     
+      
+      
+      
+      
+      
+}
 
 
 
