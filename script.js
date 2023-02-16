@@ -12,14 +12,14 @@ const winningCombo = [
 
 /*-- app's states(variables)  --*/
 let board
-let turn = 'X'
+let turn 
 let win
 
 
 /*-- cached elements references  --*/
 const squares = Array.from(document.querySelectorAll('#board div'))
 const messages = document.querySelector('h2')
-
+const square = document.getElementsByClassName('square')
 
 /*-- event listeners --*/
 document.getElementById('board').addEventListener('click',handleTurn)
@@ -32,6 +32,8 @@ function initGame() {
     board = ["", "", "",
             "", "", ""
           , "", "", ""]
+    
+        turn = prompt("Who goes first, X or O?")
         render()
 }
 
@@ -39,6 +41,7 @@ function render() {
     board.forEach(function(mark,index){
 squares[index].textContent = mark    });
 messages.textContent = win === 'T'?"It's a tie!" : win?` ${win} wins this round`:`Its ${turn}'s turn`
+
 
 }
 
@@ -48,16 +51,20 @@ function handleTurn(event) {
     let idx = squares.findIndex(function (square) {
         return square === event.target
     })
-     
-       board[idx] = turn
 
-   win = getWinner()
-if (squares[i].textContent === "") {
     
-}
- 
-
-render()
+    if (board[idx] !== "") {
+        return
+    }else{
+        board[idx] = turn;
+        win = getWinner()
+          
+        turn = turn === "X" ? "O" : "X";
+     
+    
+    render()
+    }
+   
 
 }
 
@@ -71,15 +78,7 @@ function getWinner() {
     return winner ? winner : board.includes('')? null: "T"
 }
 
-function checkSquare() {
-    
-     
-      
-      
-      
-      
-      
-}
+
 
 
 
