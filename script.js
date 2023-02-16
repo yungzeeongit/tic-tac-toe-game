@@ -35,9 +35,12 @@ function initGame() {
           , "", "", ""]
 
           while (!validInput) {
-          let input = prompt("Who goes first, X or O?")
+          let input = prompt(`Who goes first, X or O?
+Press cancel to select a random character`)
             if(input === null){
-             turn = turn === undefined ? "X" : "O"; //if user fails to choose who goes first then a random player is selected to go first
+                const players= ["X", "O"]
+                turn = players[Math.floor(Math.random()* players.length)]
+             //turn = Math.random() < 0.5 ? "X" : "O"; //if user fails to choose who goes first then a random player is selected to go first
                 validInput = true
             }else if(input.toLowerCase() === "x" || input.toLowerCase() === "o"){
                  turn = input.toUpperCase()
