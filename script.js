@@ -14,6 +14,7 @@ const winningCombo = [
 let board
 let turn 
 let win
+let validInput = false
 
 
 /*-- cached elements references  --*/
@@ -32,8 +33,18 @@ function initGame() {
     board = ["", "", "",
             "", "", ""
           , "", "", ""]
-    
-        turn = prompt("Who goes first, X or O?")
+
+          while (!validInput) {
+          let input = prompt("Who goes first, X or O?")
+            if(input === null){
+             turn = turn === undefined ? "X" : "O"; //if user fails to choose who goes first then a random player is selected to go first
+                validInput = true
+            }else if(input.toLowerCase() === "x" || input.toLowerCase() === "o"){
+                 turn = input.toUpperCase()
+                 validInput = true
+          }
+        }
+      
         render()
 }
 
